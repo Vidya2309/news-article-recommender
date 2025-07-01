@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News Article Recommender</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(-45deg, #1e3c72, #2a5298, #1e3c72, #2a5298);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    @keyframes gradientShift {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      text-align: center;
+      animation: zoomIn 1s ease;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .typing {
+      font-size: 2em;
+      font-weight: bold;
+      overflow: hidden;
+      border-right: .15em solid #fff;
+      white-space: nowrap;
+      width: 0;
+      animation: typing 3s steps(40, end) forwards, blink-caret .75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: white }
+    }
+
+    select, button {
+      width: 80%;
+      padding: 12px;
+      margin-top: 25px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    select:hover, button:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(255,255,255,0.4);
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button::after {
+      content: "";
+      background: rgba(255,255,255,0.4);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      border-radius: 50%;
+      width: 200%;
+      height: 200%;
+      transition: transform 0.5s;
+      z-index: 0;
+    }
+
+    button:active::after {
+      transform: translate(-50%, -50%) scale(1);
+      transition: 0s;
+    }
+
+    button span {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-card">
+    <div class="typing">📰 News Article Recommender</div>
+    <form action="/recommend" method="POST">
+      <select name="title" required>
+        <option value="">-- Select an Article --</option>
+        {% for t in titles %}
+          <option value="{{ t }}">{{ t }}</option>
+        {% endfor %}
+      </select>
+      <br>
+      <button type="submit"><span>🔍 Recommend</span></button>
+    </form>
+    <p style="margin-top: 20px;"><a href="/fetch-news" class="back-btn">🔄 Fetch Live News</a></p>
+  </div>
+</body>
+</html>
+
