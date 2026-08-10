@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ article.headline }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="wire-header">
+        <h1>Dispatch</h1>
+        <a href="/" class="back-link">← All dispatches</a>
+    </header>
+    <main class="article-full">
+        <div class="byline">{{ article.category or 'general' }} · {{ article.source }}</div>
+        <h1>{{ article.headline }}</h1>
+        {% if article.image_url %}
+<img src="{{ article.image_url }}" alt="" style="width:100%; max-height:360px; object-fit:cover; margin:1rem 0;" onerror="this.style.display='none'">
+{% endif %}
+        <p class="desc">{{ article.description }}</p>
+<a href="{{ article.url }}" target="_blank" rel="noopener" class="fetch-btn" style="display:inline-block; margin-bottom:1.5rem;">Read full article →</a>
+        <section class="rec-section">
+            <h3>Recommended for you</h3>
+            {% for rec in recommendations %}
+            <div class="rec-card">
+                <h4><a href="/article/{{ rec.article.id }}">{{ rec.article.headline }}</a></h4>
+                <div class="match-strip">
+                    <span class="match-label">Match</span>
+                    <div class="match-bar">
+                        <div class="match-bar-fill" style="width: {{ (rec.score * 100) | round | int }}%;"></div>
+                    </div>
+                    <span class="match-pct">{{ (rec.score * 100) | round | int }}%</span>
+                </div>
+                {% if rec.shared_keywords %}
+                <div class="keyword-tags">
+                    {% for kw in rec.shared_keywords %}
+                    <span class="keyword-tag">{{ kw }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>

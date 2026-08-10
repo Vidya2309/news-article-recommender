@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@600;700&family=Lora:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --paper: #EAEEF2;
+  --ink: #12181F;
+  --ink-soft: #4A5568;
+  --teal: #1F6F5C;
+  --amber: #E8A33D;
+  --coral: #D1495B;
+  --line: #C7CED6;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Lora', serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+.wire-header {
+  border-bottom: 3px solid var(--ink);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.wire-header h1 {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.wire-nav a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  margin-right: 1rem;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.wire-nav a:hover,
+.wire-nav a.active {
+  color: var(--teal);
+  border-bottom-color: var(--teal);
+}
+
+.fetch-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.4rem 0.8rem;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.fetch-btn:hover { background: var(--teal); }
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.dispatch-list { list-style: none; padding: 0; margin: 0; }
+
+.dispatch {
+  border-bottom: 1px solid var(--line);
+  padding: 1.1rem 0;
+}
+
+.dispatch-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+}
+
+.dispatch-meta .tag {
+  color: var(--teal);
+}
+
+.dispatch h2 {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.dispatch h2 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.dispatch h2 a:hover { color: var(--teal); }
+
+.article-full h1 {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0.5rem 0;
+}
+
+.article-full .byline {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+
+.article-full p.desc {
+  font-style: italic;
+  font-size: 1.05rem;
+  margin: 1rem 0 2rem;
+}
+
+.back-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.back-link:hover { color: var(--teal); }
+
+.rec-section h3 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-top: 3px solid var(--ink);
+  padding-top: 0.75rem;
+  margin-top: 2rem;
+}
+
+.rec-card {
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 0;
+}
+
+.rec-card h4 {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 1.05rem;
+  margin: 0 0 0.5rem;
+}
+
+.rec-card h4 a { color: var(--ink); text-decoration: none; }
+.rec-card h4 a:hover { color: var(--teal); }
+
+.match-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.match-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  min-width: 3.5rem;
+}
+
+.match-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--line);
+  position: relative;
+  max-width: 160px;
+}
+
+.match-bar-fill {
+  height: 100%;
+  background: var(--amber);
+}
+
+.match-pct {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ink);
+}
+
+.keyword-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.keyword-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  background: var(--coral);
+  color: var(--paper);
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+}
+
+@media (max-width: 500px) {
+  .article-full h1 { font-size: 1.4rem; }
+  .wire-header { flex-direction: column; align-items: flex-start; }
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(18, 24, 31, 0.12);
+}
+
+.card-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  background: linear-gradient(135deg, #D8DEE4 0%, #C7CED6 100%);
+}
+
+.card-img.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+
+.card-body {
+  padding: 0.9rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card .dispatch-meta { margin-bottom: 0.4rem; }
+
+.card h2 {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.card h2 a { color: var(--ink); text-decoration: none; }
+.card h2 a:hover { color: var(--teal); }
+
+.hero {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  min-height: 280px;
+}
+
+.hero .card-img { height: 100%; aspect-ratio: unset; }
+
+.hero .card-body { padding: 1.5rem; justify-content: center; }
+
+.hero h2 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+@media (max-width: 640px) {
+  .hero { grid-template-columns: 1fr; }
+}
+.card h2 a {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.hero h2 a {
+  -webkit-line-clamp: 4;
+}

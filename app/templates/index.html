@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dispatch — News Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="wire-header">
+        <h1>Dispatch</h1>
+        <nav class="wire-nav">
+            <a href="/" class="{{ 'active' if not selected_category }}">All</a>
+            <a href="/?category=general" class="{{ 'active' if selected_category == 'general' }}">General</a>
+            <a href="/?category=tamil_nadu" class="{{ 'active' if selected_category == 'tamil_nadu' }}">Tamil Nadu</a>
+        </nav>
+        <a href="/fetch-news" class="fetch-btn" id="fetch-btn" onclick="this.textContent='Fetching...'; this.style.opacity='0.6'; this.style.pointerEvents='none';">Fetch latest</a>
+    </header>
+    <main>
+        {% if articles %}
+        <div class="grid">
+            {% for article in articles %}
+            <div class="card{% if loop.first %} hero{% endif %}">
+                {% if article.image_url %}
+                <img class="card-img" src="{{ article.image_url }}" alt="" onerror="this.outerHTML='<div class=&quot;card-img placeholder&quot;>No image</div>';">
+                {% else %}
+                <div class="card-img placeholder">No image</div>
+                {% endif %}
+                <div class="card-body">
+                    <div class="dispatch-meta">
+                        <span class="tag">{{ article.category or 'general' }}</span> · {{ article.source }}
+                    </div>
+                    <h2><a href="/article/{{ article.id }}">{{ article.headline }}</a></h2>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p style="font-family:'IBM Plex Mono',monospace; color:var(--ink-soft); margin-top:2rem;">
+            No articles yet. Click "Fetch latest" to pull in the news.
+        </p>
+        {% endif %}
+    </main>
+</body>
+</html>
