@@ -56,7 +56,8 @@ pytest tests/ -v
 - Add real user accounts instead of session-based personalization
 - Refactor duplicated fetch/dedupe logic
 - Add Tamil-language coverage
-
+## Live Demo
+https://news-article-recommender.onrender.com
 ## License
 
 MIT
